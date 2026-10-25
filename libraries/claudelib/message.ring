@@ -89,7 +89,7 @@ class ClaudeMessage
 						'"media_type":"' + jsonEsc(aItem[:mediatype]) + '",' +
 						'"data":"' + aItem[:data] + '"' +
 						'}}'
-				elseif aItem[:sourcetype] = "text"
+				but aItem[:sourcetype] = "text"
 					cJSON += '{"type":"document","source":{' +
 						'"type":"text",' +
 						'"media_type":"text/plain",' +
@@ -121,15 +121,15 @@ class ClaudeMessage
 			nCode = ascii(cChar)
 			if cChar = '"'
 				cResult += '\"'
-			elseif cChar = "\"
+			but cChar = "\"
 				cResult += "\\"
-			elseif nCode = 10
+			but nCode = 10
 				cResult += "\n"
-			elseif nCode = 13
+			but nCode = 13
 				cResult += "\r"
-			elseif nCode = 9
+			but nCode = 9
 				cResult += "\t"
-			elseif nCode < 32
+			but nCode < 32
 				cHexChars = "0123456789abcdef"
 				cResult += "\u00"
 				cResult += cHexChars[(nCode >> 4) + 1]
@@ -139,4 +139,3 @@ class ClaudeMessage
 			ok
 		next
 		return cResult
-
