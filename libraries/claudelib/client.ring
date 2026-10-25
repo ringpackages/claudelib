@@ -79,6 +79,31 @@ class ClaudeClient
 		nBudgetTokens = nTokens
 		return self
 
+	# Claude 4.7 and later models accept only the default sampling
+	# (temperature, top_p and top_k are rejected)
+	func supportsSampling
+		return ! isNewModel()
+
+	# Claude 4.6 and later models use adaptive thinking
+	# (budget_tokens is rejected or deprecated)
+	func supportsAdaptiveThinking
+		if isNewModel()
+			return true
+		ok
+		return substr(cModel, "claude-opus-4-6") > 0 or
+		       substr(cModel, "claude-sonnet-4-6") > 0
+
+	func isNewModel
+		aPrefixes = ["claude-opus-4-7", "claude-opus-4-8", "claude-opus-5",
+			     "claude-sonnet-5", "claude-haiku-5", "claude-fable-",
+			     "claude-mythos-"]
+		for cPrefix in aPrefixes
+			if substr(cModel, cPrefix) > 0
+				return true
+			ok
+		next
+		return false
+
 	func getLastError
 		return cLastError
 
@@ -273,19 +298,28 @@ class ClaudeClient
 			cJSON += ',"system":"' + jsonEsc(cSys) + '"'
 		ok
 
-		# Temperature (number)
-		if nTemperature >= 0
-			cJSON += ',"temperature":' + "" + nTemperature
-		ok
+		# Sampling parameters (skipped on models that reject them,
+		# and when thinking is enabled, since it requires the defaults)
+		if supportsSampling() and nBudgetTokens <= 0
 
-		# Top P (number)
-		if nTopP >= 0
-			cJSON += ',"top_p":' + "" + nTopP
-		ok
+			# Temperature (number)
+			if nTemperature >= 0
+				cJSON += ',"temperature":' + "" + nTemperature
+			ok
 
-		# Top K (number)
-		if nTopK >= 0
-			cJSON += ',"top_k":' + "" + nTopK
+			# Top P (number)
+			if nTopP >= 0
+				cJSON += ',"top_p":' + "" + nTopP
+			ok
+
+			# Top K (number)
+			if nTopK >= 0
+				cJSON += ',"top_k":' + "" + nTopK
+			ok
+
+		but lVerbose and (nTemperature >= 0 or nTopP >= 0 or nTopK >= 0)
+			see "RingClaude: " + cModel +
+				" uses default sampling, temperature/top_p/top_k ignored" + nl
 		ok
 
 		# Stop Sequences (array of strings)
@@ -301,10 +335,16 @@ class ClaudeClient
 			cJSON += ']'
 		ok
 
-		# Extended Thinking (integer)
+		# Extended Thinking
+		# Newer models use adaptive thinking (the budget value is ignored)
+		# "summarized" returns readable thinking text (the default is empty)
 		if nBudgetTokens > 0
-			cJSON += ',"thinking":{"type":"enabled","budget_tokens":' + 
-				"" + nBudgetTokens + '}'
+			if supportsAdaptiveThinking()
+				cJSON += ',"thinking":{"type":"adaptive","display":"summarized"}'
+			else
+				cJSON += ',"thinking":{"type":"enabled","budget_tokens":' +
+					"" + nBudgetTokens + '}'
+			ok
 		ok
 
 		cJSON += "}"
