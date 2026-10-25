@@ -7,3 +7,4 @@
 
 load "libcurl.ring"
 load "globals.ring"
+load "message.ring"
