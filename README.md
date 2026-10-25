@@ -34,10 +34,10 @@ More examples are in the samples/UsingClaudeLib folder:
 
 | Sample | Description |
 |---|---|
-| sample1_basic.ring | Questions, system prompt, model selection, conversation, response details, error handling |
-| sample2_advanced.ring | Multiple chats, temperature, max tokens, stop sequences, thinking, debug mode, building messages, top_p/top_k |
-| sample3_files.ring | Images (file and URL), PDF and text documents, auto-detected files, multi-modal messages |
-| sample4_chatbot.ring | Interactive console chatbot with commands |
+| [sample1_basic.ring](https://github.com/ringpackages/claudelib/blob/main/samples/UsingClaudeLib/sample1_basic.ring) | Questions, system prompt, model selection, conversation, response details, error handling |
+| [sample2_advanced.ring](https://github.com/ringpackages/claudelib/blob/main/samples/UsingClaudeLib/sample2_advanced.ring) | Multiple chats, temperature, max tokens, stop sequences, thinking, debug mode, building messages, top_p/top_k |
+| [sample3_files.ring](https://github.com/ringpackages/claudelib/blob/main/samples/UsingClaudeLib/sample3_files.ring) | Images (file and URL), PDF and text documents, auto-detected files, multi-modal messages |
+| [sample4_chatbot.ring](https://github.com/ringpackages/claudelib/blob/main/samples/UsingClaudeLib/sample4_chatbot.ring) | Interactive console chatbot with commands |
 
 ## Classes
 
