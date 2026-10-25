@@ -96,7 +96,19 @@ func main
 			# /model <name>
 			but left(cCmd, 7) = "/model "
 				cModelName = trim(lower(substr(cInput, 8)))
-				if cModelName = "opus" or cModelName = "opus46"
+				if cModelName = "fable" or cModelName = "fable51"
+					oClient.setModel(CLAUDELIB_MODEL_FABLE_51)
+					see "Model set to: Claude Fable 5.1" + nl
+				but cModelName = "opus55"
+					oClient.setModel(CLAUDELIB_MODEL_OPUS_55)
+					see "Model set to: Claude Opus 5.5" + nl
+				but cModelName = "sonnet55"
+					oClient.setModel(CLAUDELIB_MODEL_SONNET_55)
+					see "Model set to: Claude Sonnet 5.5" + nl
+				but cModelName = "haiku55"
+					oClient.setModel(CLAUDELIB_MODEL_HAIKU_55)
+					see "Model set to: Claude Haiku 5.5" + nl
+				but cModelName = "opus" or cModelName = "opus46"
 					oClient.setModel(CLAUDELIB_MODEL_OPUS_46)
 					see "Model set to: Claude Opus 4.6" + nl
 				but cModelName = "opus45"
@@ -112,7 +124,8 @@ func main
 					oClient.setModel(CLAUDELIB_MODEL_HAIKU_45)
 					see "Model set to: Claude Haiku 4.5" + nl
 				else
-					see "Unknown model. Use: opus, sonnet, haiku" + nl
+					see "Unknown model. Use: fable, opus55, sonnet55, " +
+						"haiku55, opus, sonnet, haiku" + nl
 				ok
 
 			# /tokens <n>
@@ -135,6 +148,10 @@ func main
 					nTemp = 0 + cVal
 					oClient.setTemperature(nTemp)
 					see "Temperature set to: " + nTemp + nl
+				ok
+				if ! oClient.supportsSampling()
+					see "Note: " + oClient.getModel() +
+						" ignores temperature (default sampling only)" + nl
 				ok
 
 			# /info
@@ -197,7 +214,8 @@ func showHelp
 	see "  /switch <name>  Switch to an existing chat" + nl
 	see "  /list           List all chat sessions" + nl
 	see "  /system <text>  Set system prompt for current chat" + nl
-	see "  /model <name>   Change model (opus/sonnet/haiku)" + nl
+	see "  /model <name>   Change model (fable/opus55/sonnet55/haiku55/" +
+		"opus/sonnet/haiku)" + nl
 	see "  /tokens <n>     Set max tokens" + nl
 	see "  /temp <n>       Set temperature (or 'default')" + nl
 	see "  /info           Show current settings" + nl

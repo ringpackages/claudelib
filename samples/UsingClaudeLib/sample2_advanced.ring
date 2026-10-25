@@ -59,6 +59,12 @@ func main
 
 	see "=== Example 2: Temperature Control ===" + nl + nl
 
+	# Note: Claude 4.7 and later models accept only the default sampling,
+	# so the library skips temperature/top_p/top_k for these models
+	if ! oClient.supportsSampling()
+		see "(" + oClient.getModel() + " ignores temperature)" + nl + nl
+	ok
+
 	# Low temperature = more deterministic/focused
 	oClient.setTemperature(0.1)
 	oChat = oClient.createChat("temp-low")
@@ -116,8 +122,10 @@ func main
 
 	see "=== Example 5: Extended Thinking ===" + nl + nl
 
+	# Older models (like Sonnet 4.5) use the thinking budget (tokens)
+	# Newer models (4.6 and later) use adaptive thinking and ignore it
 	oClient.setBudgetTokens(2000)
-	oClient.setModel(CLAUDELIB_MODEL_SONNET_45)
+	oClient.setModel(CLAUDELIB_MODEL_SONNET_55)
 
 	oThinkChat = oClient.createChat("thinking-test")
 	oThinkChat.addUserText("What is 127 * 389? Think step by step.")
@@ -129,6 +137,7 @@ func main
 	see "Answer: " + oResponse.getText() + nl + nl
 
 	oClient.setBudgetTokens(0)
+	oClient.setModel(CLAUDELIB_MODEL_DEFAULT)
 
 	# ====================================================================
 	#  Example 6: Verbose / Debug Mode
@@ -175,6 +184,11 @@ func main
 	# ====================================================================
 
 	see "=== Example 8: Top P and Top K ===" + nl + nl
+
+	# Like temperature, these are skipped for Claude 4.7 and later models
+	if ! oClient.supportsSampling()
+		see "(" + oClient.getModel() + " ignores top_p/top_k)" + nl + nl
+	ok
 
 	oClient.setTopP(0.9)
 	oClient.setTopK(40)
