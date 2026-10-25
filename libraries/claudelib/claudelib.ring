@@ -8,3 +8,4 @@
 load "libcurl.ring"
 load "globals.ring"
 load "message.ring"
+load "chat.ring"
