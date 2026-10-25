@@ -28,7 +28,9 @@ oClient = new ClaudeClient(read("claude_api_key.txt"))
 
 ```
 
-More examples are in the `samples/UsingClaudeLib` folder:
+## Samples
+
+More examples are in the samples/UsingClaudeLib folder:
 
 | Sample | Description |
 |---|---|
@@ -36,72 +38,6 @@ More examples are in the `samples/UsingClaudeLib` folder:
 | sample2_advanced.ring | Multiple chats, temperature, max tokens, stop sequences, thinking, debug mode, building messages, top_p/top_k |
 | sample3_files.ring | Images (file and URL), PDF and text documents, auto-detected files, multi-modal messages |
 | sample4_chatbot.ring | Interactive console chatbot with commands |
-
-## Constants
-
-### API Configuration
-
-| Constant | Value |
-|---|---|
-| `CLAUDELIB_API_URL` | `"https://api.anthropic.com/v1/messages"` |
-| `CLAUDELIB_API_VERSION` | `"2023-06-01"` |
-
-### Models
-
-| Constant | Model ID | Notes |
-|---|---|---|
-| `CLAUDELIB_MODEL_FABLE_51` | `claude-fable-5-1` | Most capable model |
-| `CLAUDELIB_MODEL_FABLE_5` | `claude-fable-5` | |
-| `CLAUDELIB_MODEL_OPUS_55` | `claude-opus-5-5` | Current Opus |
-| `CLAUDELIB_MODEL_OPUS_5` | `claude-opus-5` | |
-| `CLAUDELIB_MODEL_OPUS_48` | `claude-opus-4-8` | |
-| `CLAUDELIB_MODEL_OPUS_47` | `claude-opus-4-7` | |
-| `CLAUDELIB_MODEL_OPUS_46` | `claude-opus-4-6` | |
-| `CLAUDELIB_MODEL_OPUS_45` | `claude-opus-4-5-20251101` | |
-| `CLAUDELIB_MODEL_SONNET_55` | `claude-sonnet-5-5` | Current Sonnet |
-| `CLAUDELIB_MODEL_SONNET_5` | `claude-sonnet-5` | |
-| `CLAUDELIB_MODEL_SONNET_46` | `claude-sonnet-4-6` | |
-| `CLAUDELIB_MODEL_SONNET_45` | `claude-sonnet-4-5-20250929` | |
-| `CLAUDELIB_MODEL_SONNET_4` | `claude-sonnet-4-20250514` | Deprecated by Anthropic |
-| `CLAUDELIB_MODEL_HAIKU_55` | `claude-haiku-5-5` | Current Haiku |
-| `CLAUDELIB_MODEL_HAIKU_45` | `claude-haiku-4-5-20251001` | |
-| `CLAUDELIB_MODEL_DEFAULT` | Same as `CLAUDELIB_MODEL_SONNET_45` | Used by new clients |
-
-### Content Types
-
-| Constant | Value |
-|---|---|
-| `CLAUDELIB_CONTENT_TEXT` | `"text"` |
-| `CLAUDELIB_CONTENT_IMAGE` | `"image"` |
-| `CLAUDELIB_CONTENT_DOCUMENT` | `"document"` |
-
-### Media Types
-
-| Constant | Value |
-|---|---|
-| `CLAUDELIB_MEDIA_JPEG` | `"image/jpeg"` |
-| `CLAUDELIB_MEDIA_PNG` | `"image/png"` |
-| `CLAUDELIB_MEDIA_GIF` | `"image/gif"` |
-| `CLAUDELIB_MEDIA_WEBP` | `"image/webp"` |
-| `CLAUDELIB_MEDIA_PDF` | `"application/pdf"` |
-| `CLAUDELIB_MEDIA_TXT` | `"text/plain"` |
-
-### Roles
-
-| Constant | Value |
-|---|---|
-| `CLAUDELIB_ROLE_USER` | `"user"` |
-| `CLAUDELIB_ROLE_ASSISTANT` | `"assistant"` |
-
-### Stop Reasons
-
-Compare these with `ClaudeResponse.getStopReason()`.
-
-| Constant | Value | Meaning |
-|---|---|---|
-| `CLAUDELIB_STOP_END_TURN` | `"end_turn"` | Claude finished its answer |
-| `CLAUDELIB_STOP_MAX_TOKENS` | `"max_tokens"` | The answer reached the max tokens limit |
-| `CLAUDELIB_STOP_SEQUENCE` | `"stop_sequence"` | The answer reached one of the stop sequences |
 
 ## Classes
 
@@ -246,6 +182,65 @@ The result of a request, returned by the send methods.
 | `getErrorType()` | Return the error type |
 | `getErrorMessage()` | Return the error message |
 | `getRaw()` | Return the raw JSON response |
+
+## Constants
+
+### Models
+
+| Constant | Model ID | Notes |
+|---|---|---|
+| `CLAUDELIB_MODEL_FABLE_51` | `claude-fable-5-1` | Most capable model |
+| `CLAUDELIB_MODEL_FABLE_5` | `claude-fable-5` | |
+| `CLAUDELIB_MODEL_OPUS_55` | `claude-opus-5-5` | Current Opus |
+| `CLAUDELIB_MODEL_OPUS_5` | `claude-opus-5` | |
+| `CLAUDELIB_MODEL_OPUS_48` | `claude-opus-4-8` | |
+| `CLAUDELIB_MODEL_OPUS_47` | `claude-opus-4-7` | |
+| `CLAUDELIB_MODEL_OPUS_46` | `claude-opus-4-6` | |
+| `CLAUDELIB_MODEL_OPUS_45` | `claude-opus-4-5-20251101` | |
+| `CLAUDELIB_MODEL_SONNET_55` | `claude-sonnet-5-5` | Current Sonnet |
+| `CLAUDELIB_MODEL_SONNET_5` | `claude-sonnet-5` | |
+| `CLAUDELIB_MODEL_SONNET_46` | `claude-sonnet-4-6` | |
+| `CLAUDELIB_MODEL_SONNET_45` | `claude-sonnet-4-5-20250929` | |
+| `CLAUDELIB_MODEL_SONNET_4` | `claude-sonnet-4-20250514` | Deprecated by Anthropic |
+| `CLAUDELIB_MODEL_HAIKU_55` | `claude-haiku-5-5` | Current Haiku |
+| `CLAUDELIB_MODEL_HAIKU_45` | `claude-haiku-4-5-20251001` | |
+| `CLAUDELIB_MODEL_DEFAULT` | Same as `CLAUDELIB_MODEL_SONNET_45` | Used by new clients |
+
+### Content Types
+
+| Constant | Value |
+|---|---|
+| `CLAUDELIB_CONTENT_TEXT` | `"text"` |
+| `CLAUDELIB_CONTENT_IMAGE` | `"image"` |
+| `CLAUDELIB_CONTENT_DOCUMENT` | `"document"` |
+
+### Media Types
+
+| Constant | Value |
+|---|---|
+| `CLAUDELIB_MEDIA_JPEG` | `"image/jpeg"` |
+| `CLAUDELIB_MEDIA_PNG` | `"image/png"` |
+| `CLAUDELIB_MEDIA_GIF` | `"image/gif"` |
+| `CLAUDELIB_MEDIA_WEBP` | `"image/webp"` |
+| `CLAUDELIB_MEDIA_PDF` | `"application/pdf"` |
+| `CLAUDELIB_MEDIA_TXT` | `"text/plain"` |
+
+### Roles
+
+| Constant | Value |
+|---|---|
+| `CLAUDELIB_ROLE_USER` | `"user"` |
+| `CLAUDELIB_ROLE_ASSISTANT` | `"assistant"` |
+
+### Stop Reasons
+
+Compare these with `ClaudeResponse.getStopReason()`.
+
+| Constant | Value | Meaning |
+|---|---|---|
+| `CLAUDELIB_STOP_END_TURN` | `"end_turn"` | Claude finished its answer |
+| `CLAUDELIB_STOP_MAX_TOKENS` | `"max_tokens"` | The answer reached the max tokens limit |
+| `CLAUDELIB_STOP_SEQUENCE` | `"stop_sequence"` | The answer reached one of the stop sequences |
 
 ## License
 
