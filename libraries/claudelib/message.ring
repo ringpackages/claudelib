@@ -15,14 +15,14 @@ class ClaudeMessage
 
 	func addText cText
 		aContent + [
-			:type = RINGCLAUDE_CONTENT_TEXT,
+			:type = CLAUDELIB_CONTENT_TEXT,
 			:text = cText
 		]
 		return self
 
 	func addImageBase64 cBase64Data, cMediaType
 		aContent + [
-			:type       = RINGCLAUDE_CONTENT_IMAGE,
+			:type       = CLAUDELIB_CONTENT_IMAGE,
 			:sourcetype = "base64",
 			:mediatype  = cMediaType,
 			:data       = cBase64Data
@@ -31,7 +31,7 @@ class ClaudeMessage
 
 	func addImageURL cImageURL
 		aContent + [
-			:type       = RINGCLAUDE_CONTENT_IMAGE,
+			:type       = CLAUDELIB_CONTENT_IMAGE,
 			:sourcetype = "url",
 			:imageurl   = cImageURL
 		]
@@ -39,7 +39,7 @@ class ClaudeMessage
 
 	func addDocumentBase64 cBase64Data, cMediaType
 		aContent + [
-			:type       = RINGCLAUDE_CONTENT_DOCUMENT,
+			:type       = CLAUDELIB_CONTENT_DOCUMENT,
 			:sourcetype = "base64",
 			:mediatype  = cMediaType,
 			:data       = cBase64Data
@@ -48,9 +48,9 @@ class ClaudeMessage
 
 	func addDocumentPlainText cText, cTitle
 		aContent + [
-			:type       = RINGCLAUDE_CONTENT_DOCUMENT,
+			:type       = CLAUDELIB_CONTENT_DOCUMENT,
 			:sourcetype = "text",
-			:mediatype  = RINGCLAUDE_MEDIA_TXT,
+			:mediatype  = CLAUDELIB_MEDIA_TXT,
 			:data       = cText,
 			:title      = cTitle
 		]
@@ -66,10 +66,10 @@ class ClaudeMessage
 		for nIdx = 1 to nCount
 			aItem = aContent[nIdx]
 			switch aItem[:type]
-			on RINGCLAUDE_CONTENT_TEXT
+			on CLAUDELIB_CONTENT_TEXT
 				cJSON += '{"type":"text","text":"' + 
 					jsonEsc(aItem[:text]) + '"}'
-			on RINGCLAUDE_CONTENT_IMAGE
+			on CLAUDELIB_CONTENT_IMAGE
 				if aItem[:sourcetype] = "base64"
 					cJSON += '{"type":"image","source":{' +
 						'"type":"base64",' +
@@ -82,7 +82,7 @@ class ClaudeMessage
 						'"url":"' + jsonEsc(aItem[:imageurl]) + '"' +
 						'}}'
 				ok
-			on RINGCLAUDE_CONTENT_DOCUMENT
+			on CLAUDELIB_CONTENT_DOCUMENT
 				if aItem[:sourcetype] = "base64"
 					cJSON += '{"type":"document","source":{' +
 						'"type":"base64",' +

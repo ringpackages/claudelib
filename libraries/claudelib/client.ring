@@ -1,7 +1,7 @@
 class ClaudeClient
 
 	cAPIKey           = ""
-	cModel            = RINGCLAUDE_MODEL_DEFAULT
+	cModel            = CLAUDELIB_MODEL_DEFAULT
 	nMaxTokens        = 4096
 	nTemperature      = -1
 	nTopP             = -1
@@ -10,8 +10,8 @@ class ClaudeClient
 	aChats            = []
 	cLastError        = ""
 	lVerbose          = false
-	cAPIURL           = RINGCLAUDE_API_URL
-	cAPIVersion       = RINGCLAUDE_API_VERSION
+	cAPIURL           = CLAUDELIB_API_URL
+	cAPIVersion       = CLAUDELIB_API_VERSION
 	nBudgetTokens     = 0
 
 	func init cKey
@@ -220,17 +220,17 @@ class ClaudeClient
 	func detectMediaType cFilePath
 		cLowerPath = lower(cFilePath)
 		if right(cLowerPath, 4) = ".jpg" or right(cLowerPath, 5) = ".jpeg"
-			return RINGCLAUDE_MEDIA_JPEG
+			return CLAUDELIB_MEDIA_JPEG
 		but right(cLowerPath, 4) = ".png"
-			return RINGCLAUDE_MEDIA_PNG
+			return CLAUDELIB_MEDIA_PNG
 		but right(cLowerPath, 4) = ".gif"
-			return RINGCLAUDE_MEDIA_GIF
+			return CLAUDELIB_MEDIA_GIF
 		but right(cLowerPath, 5) = ".webp"
-			return RINGCLAUDE_MEDIA_WEBP
+			return CLAUDELIB_MEDIA_WEBP
 		but right(cLowerPath, 4) = ".pdf"
-			return RINGCLAUDE_MEDIA_PDF
+			return CLAUDELIB_MEDIA_PDF
 		but right(cLowerPath, 4) = ".txt"
-			return RINGCLAUDE_MEDIA_TXT
+			return CLAUDELIB_MEDIA_TXT
 		ok
 		return ""
 
@@ -244,10 +244,10 @@ class ClaudeClient
 		if cBase64 = ""
 			return NULL
 		ok
-		if cMediaType = RINGCLAUDE_MEDIA_JPEG or
-		   cMediaType = RINGCLAUDE_MEDIA_PNG or
-		   cMediaType = RINGCLAUDE_MEDIA_GIF or
-		   cMediaType = RINGCLAUDE_MEDIA_WEBP
+		if cMediaType = CLAUDELIB_MEDIA_JPEG or
+		   cMediaType = CLAUDELIB_MEDIA_PNG or
+		   cMediaType = CLAUDELIB_MEDIA_GIF or
+		   cMediaType = CLAUDELIB_MEDIA_WEBP
 			return sendImageToChat(cChatID, cText, cBase64, cMediaType)
 		else
 			return sendDocumentToChat(cChatID, cText, cBase64, cMediaType)

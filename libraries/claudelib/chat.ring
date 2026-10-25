@@ -24,19 +24,19 @@ class ClaudeChat
 		return self
 
 	func addUserText cText
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_USER)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_USER)
 		oMsg.addText(cText)
 		add(aMessages, oMsg)
 		return self
 
 	func addAssistantText cText
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_ASSISTANT)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_ASSISTANT)
 		oMsg.addText(cText)
 		add(aMessages, oMsg)
 		return self
 
 	func addUserImageBase64 cText, cBase64Data, cMediaType
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_USER)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_USER)
 		if cText != NULL and cText != ""
 			oMsg.addText(cText)
 		ok
@@ -45,7 +45,7 @@ class ClaudeChat
 		return self
 
 	func addUserImageURL cText, cImageURL
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_USER)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_USER)
 		if cText != NULL and cText != ""
 			oMsg.addText(cText)
 		ok
@@ -54,7 +54,7 @@ class ClaudeChat
 		return self
 
 	func addUserDocument cText, cBase64Data, cMediaType
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_USER)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_USER)
 		if cText != NULL and cText != ""
 			oMsg.addText(cText)
 		ok
@@ -63,7 +63,7 @@ class ClaudeChat
 		return self
 
 	func addUserTextDocument cText, cDocText, cTitle
-		oMsg = new ClaudeMessage(RINGCLAUDE_ROLE_USER)
+		oMsg = new ClaudeMessage(CLAUDELIB_ROLE_USER)
 		if cText != NULL and cText != ""
 			oMsg.addText(cText)
 		ok

@@ -1,35 +1,35 @@
 # API Configuration
-RINGCLAUDE_API_URL         = "https://api.anthropic.com/v1/messages"
-RINGCLAUDE_API_VERSION     = "2023-06-01"
+CLAUDELIB_API_URL         = "https://api.anthropic.com/v1/messages"
+CLAUDELIB_API_VERSION     = "2023-06-01"
 
 # Model Constants
-RINGCLAUDE_MODEL_OPUS_46          = "claude-opus-4-6"
-RINGCLAUDE_MODEL_OPUS_45          = "claude-opus-4-5-20250514"
-RINGCLAUDE_MODEL_SONNET_45        = "claude-sonnet-4-5-20250929"
-RINGCLAUDE_MODEL_SONNET_4         = "claude-sonnet-4-20250514"
-RINGCLAUDE_MODEL_HAIKU_45         = "claude-haiku-4-5-20251001"
-RINGCLAUDE_MODEL_DEFAULT          = RINGCLAUDE_MODEL_SONNET_45
+CLAUDELIB_MODEL_OPUS_46          = "claude-opus-4-6"
+CLAUDELIB_MODEL_OPUS_45          = "claude-opus-4-5-20250514"
+CLAUDELIB_MODEL_SONNET_45        = "claude-sonnet-4-5-20250929"
+CLAUDELIB_MODEL_SONNET_4         = "claude-sonnet-4-20250514"
+CLAUDELIB_MODEL_HAIKU_45         = "claude-haiku-4-5-20251001"
+CLAUDELIB_MODEL_DEFAULT          = CLAUDELIB_MODEL_SONNET_45
 
 # Content Types
-RINGCLAUDE_CONTENT_TEXT      = "text"
-RINGCLAUDE_CONTENT_IMAGE     = "image"
-RINGCLAUDE_CONTENT_DOCUMENT  = "document"
+CLAUDELIB_CONTENT_TEXT      = "text"
+CLAUDELIB_CONTENT_IMAGE     = "image"
+CLAUDELIB_CONTENT_DOCUMENT  = "document"
 
 # Image Media Types
-RINGCLAUDE_MEDIA_JPEG  = "image/jpeg"
-RINGCLAUDE_MEDIA_PNG   = "image/png"
-RINGCLAUDE_MEDIA_GIF   = "image/gif"
-RINGCLAUDE_MEDIA_WEBP  = "image/webp"
+CLAUDELIB_MEDIA_JPEG  = "image/jpeg"
+CLAUDELIB_MEDIA_PNG   = "image/png"
+CLAUDELIB_MEDIA_GIF   = "image/gif"
+CLAUDELIB_MEDIA_WEBP  = "image/webp"
 
 # Document Media Types
-RINGCLAUDE_MEDIA_PDF   = "application/pdf"
-RINGCLAUDE_MEDIA_TXT   = "text/plain"
+CLAUDELIB_MEDIA_PDF   = "application/pdf"
+CLAUDELIB_MEDIA_TXT   = "text/plain"
 
 # Roles
-RINGCLAUDE_ROLE_USER      = "user"
-RINGCLAUDE_ROLE_ASSISTANT = "assistant"
+CLAUDELIB_ROLE_USER      = "user"
+CLAUDELIB_ROLE_ASSISTANT = "assistant"
 
 # Stop Reasons
-RINGCLAUDE_STOP_END_TURN    = "end_turn"
-RINGCLAUDE_STOP_MAX_TOKENS  = "max_tokens"
-RINGCLAUDE_STOP_SEQUENCE    = "stop_sequence"
+CLAUDELIB_STOP_END_TURN    = "end_turn"
+CLAUDELIB_STOP_MAX_TOKENS  = "max_tokens"
+CLAUDELIB_STOP_SEQUENCE    = "stop_sequence"
