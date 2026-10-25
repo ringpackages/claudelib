@@ -15,9 +15,9 @@ aPackageInfo = [
 	],
 	:libs = 	[
 		[
-			:name = "",
-			:version = "",
-			:providerusername = ""
+			:name = "ringcurl",
+			:version = "1.0",
+			:providerusername = "ringpackages"
 		]
 	],
 	:files = 	[
