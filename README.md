@@ -77,10 +77,6 @@ Most setter methods return the object, so calls can be chained.
 | `supportsAdaptiveThinking()` | True for Claude 4.6 and later models |
 | `isNewModel()` | True for Claude 4.7 and later models |
 
-The library uses these methods to build a valid request for each model:
-
-* temperature, top_p and top_k are sent only if `supportsSampling()` is true and thinking is disabled (thinking requires the default sampling).
-* When thinking is enabled, models with adaptive thinking get `{"type":"adaptive","display":"summarized"}` and the budget value is ignored. Older models (like Sonnet 4.5 and Haiku 4.5) get `{"type":"enabled","budget_tokens":n}`.
 
 **Chats**
 
@@ -104,10 +100,6 @@ The library uses these methods to build a valid request for each model:
 | `sendImageURLToChat(cChatID, cText, cImageURL)` | Send text with an image URL |
 | `sendDocumentToChat(cChatID, cText, cBase64Data, cMediaType)` | Send text with a base64 document |
 | `sendFileToChat(cChatID, cText, cFilePath)` | Send text with a file (image or document, detected from the extension) |
-
-The send methods return NULL if the request can't be sent (for example, the API key or the chat is missing). Use `getLastError()` to know why.
-
-After a successful answer, the answer text is added to the chat history automatically.
 
 **Files**
 
